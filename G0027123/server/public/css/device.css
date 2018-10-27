@@ -1,0 +1,65 @@
+#devicePage {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#photoImg{
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 200px;
+}
+#photoCanvas{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#qrcode{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#filterCanvas0{
+  position: absolute;
+  display: none;
+}
+
+#filterCanvas1{
+  position: absolute;
+  display: none;
+}
+
+#filterCanvas2{
+  position: absolute;
+  display: none;
+}
+
+#qrcodePhoto{
+  position: absolute;
+  background-color: #ffffff;
+  padding: 5px;
+  display: none;
+}
+
+#flowerCanvas{
+  position: absolute;
+}
+
+.fontText{
+  font-family:'testFont';
+  color: white;
+  position: absolute;
+}
+
+video{
+  display: none;
+  position: absolute;
+  left: 0px;
+  top: 30%;
+  width: 100%;
+}
+
+#cnzz_stat_icon_1273207290 {
+  display:none;
+}

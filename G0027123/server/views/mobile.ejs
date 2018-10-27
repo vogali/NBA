@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%- htmlWebpackPlugin.options.title  %></title>
+
+  <meta charset="utf-8">
+
+  <meta name="spm-id" content="a1z51.24791535" />
+  <!--开启数据统计功能-->
+
+  <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1273207290'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1273207290%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+
+  <script src="//g.alicdn.com/tmapp/tida/3.3.1/tida.js?appkey=24791535"></script><!--引入Tida-->
+  <script src="//g.alicdn.com/mtb/zepto/1.0.4/zepto.js"></script>
+
+  <script src="/js/libs/phaser-2.9.1.min.js"></script>
+  <script src="/js/libs/vconsole-3.1.0.min.js"></script>
+
+  <link rel="stylesheet" href="/css/mobile.css?v=version" type="text/css" />
+
+  <script>
+  var GAME_ID = 'gameId';
+
+  var USER_INFO = {
+    'userNick': decodeURIComponent("userNick")
+  };
+  Zepto(function($) {
+    Tida.ready({
+      module: ["device", "media", "server", "social", "widget", "sensor", "share", "buy", "draw", "im", "calendar", 'award', 'ar']
+    }, function() {
+    	console.log("tida ready");
+      var sellerId = "sellerId";
+
+      Tida.subscribe.state({
+        'accountId': sellerId
+      }, function(data){
+        //alert(JSON.stringify(data))
+        if (!data.followState || data.followState === "false") {
+          Tida.subscribe.add({
+            'accountId': sellerId,
+            'originFlag': "originFlag"
+          },function(data){
+  		  Tida.newReport('/vendor.phone.follow', '',
+  			'sellerId=sellerId&machineId=machineId&originFlag=originFlag', 'GET');
+            //alert(JSON.stringify(data))
+            //Tida.popWindow();
+            addFollowLog();
+          },function (e) {
+            //alert(JSON.stringify(e))
+            //Tida.popWindow();
+          });
+        } else {
+          //Tida.popWindow();
+        }
+      },function (e) {
+        //alert(JSON.stringify(e))
+        //Tida.popWindow();
+      });
+    })
+  });
+
+    function addFollowLog(){
+        var visitUrl = window.location.origin;
+        var logUrl = visitUrl + '/api/log/add';
+        var data = {
+          'sessionUuid': "",
+          'machineId': "machineId",
+          'gameId': GAME_ID,
+          'type': "follow"
+        };
+        //alert(logUrl + '\n' + JSON.stringify({data}))
+        $.ajax({
+          type: 'POST',
+          url: logUrl,
+          data: JSON.stringify(data),
+          dataType: 'json',
+          contentType:"application/json; charset=utf-8",
+          //timeout: 3000,
+          success: function(data){
+            console.log(data);
+            //alert(alert(JSON.stringify({data})))
+          },
+          error: function(xhr, type){
+            //alert(type);
+          }
+        });
+    }
+  </script>
+
+  <script src="/js/mobile_gameId.js?v=version"></script>
+
+</head>
+<body>
+  <div id="mobilePage"></div>
+</body>
+</html>

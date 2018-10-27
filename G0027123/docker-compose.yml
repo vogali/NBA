@@ -1,0 +1,38 @@
+version: '3'
+services:
+  production:
+    image: "g0027-production"
+    build:
+      context: ./
+      args:
+        GAME_ID: "G0027"
+        DEPLOY_ENV: "production"
+        DEPLOY_PORT: "60027 40027"
+    ports:
+      - "60027:60027"
+      - "40027:40027"
+    volumes:
+      - g0027-production-data:/usr/src/app/data
+
+  staging:
+    image: "g0027-staging"
+    build:
+      context: ./
+      args:
+        GAME_ID: "G0027"
+        DEPLOY_ENV: "staging"
+        DEPLOY_PORT: "50027 30027"
+    ports:
+      - "50027:50027"
+      - "30027:30027"
+    volumes:
+      - g0027-staging-data:/usr/src/app/data
+
+networks:
+  default:
+    external:
+      name: game-backend-network
+
+volumes:
+  g0027-staging-data:
+  g0027-production-data:

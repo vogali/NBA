@@ -1,0 +1,16 @@
+{
+  "name": "game-0000",
+  "description": "",
+  "main": "",
+  "authors": [],
+  "license": "",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

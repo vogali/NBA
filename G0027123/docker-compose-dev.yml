@@ -1,0 +1,22 @@
+version: '3'
+services:
+  development:
+    image: "g0027-development"
+    build:
+      context: ./
+      args:
+        GAME_ID: "G0027"
+        DEPLOY_ENV: "development"
+        DEPLOY_PORT: "60027 40027"
+    ports:
+      - "60027:60027"
+      - "40027:40027"
+    network_mode: bridge
+    volumes:
+      - ./docker/data:/usr/src/app/data
+      - ./server:/usr/src/app/server # we can enable it when debug
+
+#networks:
+#  default:
+#    external:
+#      name: game-backend-network
