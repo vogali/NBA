@@ -1177,7 +1177,7 @@ BasicGame.ScanPage.prototype = {
   },
 
   generateQRcode: function() {
-    var redirectUrl = 'http://localhost/development/games/G0027/qrcode?uuid=' + BasicGame.sessionUuid;
+    var redirectUrl = 'http://projects.36krvm.com/staging/games/G0027/qrcode?uuid=' + BasicGame.sessionUuid;
     console.log(redirectUrl);
 
     var typeNumber = 0;
