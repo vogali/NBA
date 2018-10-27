@@ -95,9 +95,9 @@ app.use(bodyParser.urlencoded({ limit:'50mb', extended: false }));
 app.use(bodyParser.json({ limit:'50mb'}));
 
 app.use(express.static(path.join(__dirname, '../../dist')));
-app.use("/data", express.static(path.join(__dirname, '../../data')));
+app.use("/development/games/G0027/data", express.static(path.join(__dirname, '../../data')));
 
-app.use("/services", svc.express());
+app.use("/development/games/G0027/services", svc.express());
 app.use('/', nodeRouter);
 
 const upload = multer({ dest: 'data' });
@@ -126,7 +126,7 @@ function processAndUploadVideo(video) {
   return new Promise((resolve, reject) => {
     var form = new FormData();
     form.append('video', fs.createReadStream(video));
-    return fetch('http://192.168.6.101:8000/upload/video', { method: 'POST', body: form })
+    return fetch('http://10.58.98.128:8000/upload/video', { method: 'POST', body: form })
       .then(function(res) {
         return res.json();
       }).then(function(json) {
@@ -149,7 +149,7 @@ function processAndUploadVideo(video) {
 function takeVideo(video) {
   return new Promise((resolve, reject) => {
     console.log("Start to capture video " + video);
-    let cmd = child_process.spawn('python', ['server/scripts/gopro.py', video]);
+    let cmd = child_process.spawn('python3', ['server/scripts/gopro.py', video]);
 
     cmd.stdout.on('data', (data) => {
       console.log(`stdout: ${data}`);
