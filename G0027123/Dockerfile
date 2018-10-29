@@ -29,5 +29,5 @@ RUN \
 
 EXPOSE $DEPLOY_PORT
 
-CMD [ "node", "server/services/index.js"]
-#CMD [ "sh", "/usr/local/bin/docker-container-init.sh"]
+#CMD [ "node", "server/services/index.js"]
+CMD [ "sh", "/usr/local/bin/docker-container-init.sh"]

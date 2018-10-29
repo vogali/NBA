@@ -95,9 +95,9 @@ app.use(bodyParser.urlencoded({ limit:'50mb', extended: false }));
 app.use(bodyParser.json({ limit:'50mb'}));
 
 app.use(express.static(path.join(__dirname, '../../dist')));
-app.use("/development/games/G0027/data", express.static(path.join(__dirname, '../../data')));
+app.use("/data", express.static(path.join(__dirname, '../../data')));
 
-app.use("/development/games/G0027/services", svc.express());
+app.use("/services", svc.express());
 app.use('/', nodeRouter);
 
 const upload = multer({ dest: 'data' });
